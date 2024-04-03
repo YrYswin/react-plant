@@ -1,0 +1,71 @@
+.banner {
+  width: 1300px;
+  margin: 0 auto;
+  margin-top: 10px;
+  text-align: start;
+  box-shadow: 0 0 20px rgb(235, 235, 235);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.bannerItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 100px;
+}
+
+.titleBanner {
+  text-align: start;
+  color: rgb(0, 0, 0, .9);
+}
+
+.titleBanner h5 {
+  font-size: 18px;
+  margin: 0;
+  color: rgb(59, 59, 59);
+}
+
+.titleBanner h1 {
+  font-size: 70px;
+  font-weight: 600;
+  width: 700px;
+  font-weight: 700;
+}
+
+.titleBanner h1 strong {
+  color: #46a358;
+  font-weight: 700;
+}
+
+.titleBanner p {
+  font-size: 16px;
+  width: 650px;
+  margin-bottom: 30px;
+}
+
+.shopNowBtn {
+  padding: 8px 20px;
+  border: none;
+  background-color: #46a358;
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+/* Настройка стилей для слайдов */
+.slick-slide {
+  margin: 0;
+}
+
+/* Настройка стилей для точек навигации */
+.slick-dots {
+  bottom: 0px;
+}
+
+/* Настройка стилей для кнопок навигации */
+.slick-prev,
+.slick-next {
+  top: 50%;
+  transform: translateY(-50%);
+}

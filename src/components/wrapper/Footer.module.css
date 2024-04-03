@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yellowtail&display=swap');
+
+.footer {
+  width: 1300px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.footer .logo>img {
+  width: 60px;
+}
+
+.footer .logo {
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer .logo .title>p {
+  font-size: 14px;
+}
+
+.footer .logo .title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer .logo .title>h1 {
+  font-size: 28px;
+}
+
+.listOne {
+  display: flex;
+}
+
+.listOne .plant {
+  display: flex;
+}
+
+.listOne .plant .border {
+  border-left: 1px solid yellowgreen;
+  border-right: 1px solid yellowgreen;
+}
+
+.listOne .plant>div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: flex-start;
+  padding: 20px 40px;
+  margin: 30px 0;
+  width: 280px;
+}
+
+.listOne .plant>div .image {
+  position: relative;
+}
+
+.listOne .plant>div .image .img11 {
+  position: absolute;
+  top: 23px;
+  right: 5px;
+}
+
+.listOne .plant>div .image .img21 {
+  position: absolute;
+  top: 21px;
+  right: -6px;
+}
+
+.listOne .plant>div .image .img31 {
+  position: absolute;
+  top: 30px;
+  right: -12px;
+}
+
+.listOne .plant>div .image .img12 {
+  position: absolute;
+  top: -21px;
+  left: 13px;
+}
+
+.listOne .plant>div .image .img22 {
+  position: absolute;
+  top: -17px;
+  left: 27px;
+}
+
+.listOne .plant>div .image .img32 {
+  position: absolute;
+  top: -15px;
+  left: 27px;
+}
+
+.listOne .plant>div>h2 {
+  font-family: Roboto;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.listOne .plant>div>p,
+.listOne>div>p {
+  font-family: Roboto;
+  font-size: 16px;
+}
+
+.listOne>div {
+  text-align: start;
+}
+
+.listOne .joinContainer {
+  padding: 20px 0;
+}
+
+.listOne>div>h1 {
+  font-size: 18px;
+}
+
+.listOne>div .joinus {
+  border: .5px solid gray;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  box-shadow: 3px 3px 10px rgb(108, 107, 107, .5);
+}
+
+.listOne>div .joinus input {
+  border: none;
+  border-radius: 6px 0 0 6px;
+  padding: 10px;
+  width: 70%;
+}
+
+.listOne>div .joinus button {
+  border: none;
+  border-radius: 0 6px 6px 0;
+  width: 30%;
+  font-weight: 700;
+  font-size: 18px;
+  color: #eee;
+  background-color: rgb(2, 175, 2);
+  cursor: pointer;
+}
+
+.listTwo {
+  display: flex;
+  align-items: center;
+  background-color: #ecf6ee;
+  gap: 20px;
+  border-top: 1px solid #d7eadb;
+  border-bottom: 1px solid #d7eadb;
+  font-family: Roboto;
+  padding: 10px;
+}
+
+.listTwo .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.listTwo .link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.listTwo .link>div {
+  display: flex;
+  width: 300px;
+  align-items: center;
+  gap: 10px;
+}
+
+.listTwo .link>div>p {
+  margin: 0;
+}
+
+.listThree {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listThree .other {
+  display: flex;
+  gap: 120px;
+  padding: 30px 20px;
+}
+
+.listThree .other>div {
+  text-align: flex-start;
+}
+
+.listThree .other>div h2 {
+  font-size: 24px;
+}
+
+.listThree .other>div>p {
+  font-family: Roboto;
+  margin: 15px auto;
+  text-align: start;
+}
+
+.listThree .socialMedia {
+  padding: 30px 20px;
+  width: 340px;
+  text-align: start;
+}
+
+.listThree .social>div {
+  display: flex;
+  gap: 20px;
+}
+
+.listThree .social>div>div {
+  border: 1px solid rgb(0, 255, 0, .4);
+  width: 30px;
+  height: 30px;
+  padding: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.listThree .socialMedia>div>h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.listThree .wallet {
+  display: flex;
+  gap: 15px;
+}
+
+.listThree .wallet>img {
+  width: 50px;
+}
+
+.listFour {
+  border-top: .5px solid green;
+  padding: 20px
+}
