@@ -2,36 +2,43 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-// import { useAppDispatch } from '../../redux/store'
 import { selectCart } from '../../redux/cart/selectors'
+import { RootState, useAppDispatch } from '../../redux/store'
+import { fetchProfileData } from '../../redux/user/asyncActions'
 
 import logo from '../../assets/svg/logo.svg'
 import loginIcon from '../../assets/svg/loginIcon.svg'
 
 import styles from './Header.module.scss'
 import { Authorization } from '..'
-import { RootState } from '../../redux/store'
-// import { selectIsAuth } from '../../redux/auth/slice'=
 
 const Header = () => {
-  // const dispatch = useAppDispatch()=
+  const dispatch = useAppDispatch()
   const user = useSelector((state: RootState) => state.auth.user)
 
   const [visible, setVisible] = React.useState(false)
   const location = useLocation()
   const isMounted = React.useRef(false);
   const { items } = useSelector(selectCart)
+  const data = useSelector((state: RootState) => state.profile.data)
+
+  fetch('https://api.escuelajs.co/api/v1/auth/profile').then(response => response.json()).then(res => console.log(res))
 
   const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0)
 
   React.useEffect(() => {
-    // dispatch(selectIsAuth())=
     if (isMounted.current) {
       const json = JSON.stringify(items)
       localStorage.setItem('plantCart', json)
     }
     isMounted.current = true
   }, [items])
+
+  React.useEffect(() => {
+    if (user) {
+      dispatch(fetchProfileData(user));
+    }
+  }, [dispatch, user]);
 
   const closePopup = () => {
     setVisible(false)
@@ -49,10 +56,10 @@ const Header = () => {
         </div>
 
         <ul>
-          <li className={location.pathname === '/' ? styles.active : ''}><Link to=''>Home</Link></li>
-          <li><Link to=''>Shop</Link></li>
-          <li><Link to=''>Plant Care</Link></li>
-          <li><Link to=''>Blogs</Link></li>
+          <li className={location.pathname === '/' ? styles.active : ''}><Link to='/'>Home</Link></li>
+          <li className={location.pathname === `/shop` ? styles.active : ''}><Link to='/shop'>Shop</Link></li>
+          <li className={location.pathname === '/plant-care' ? styles.active : ''}><Link to='/plant-care'>Plant Care</Link></li>
+          <li className={location.pathname === '/blogs' ? styles.active : ''}><Link to='/blogs'>Blogs</Link></li>
         </ul>
 
         <div className={styles.search}>
@@ -68,7 +75,11 @@ const Header = () => {
             {totalCount !== 0 && <span><p>{totalCount}</p></span>}
           </Link>
 
-          {!user ? (<img src={logo} alt='user' />) : (
+          {user ? (
+            <div className={styles.avatar__image}>
+              <img src={data ? data?.avatar : logo} alt='user' />
+            </div>
+          ) : (
             <button type='button' onClick={opepPopup}>
               <img src={loginIcon} alt="login" />
               <h5>Login</h5>

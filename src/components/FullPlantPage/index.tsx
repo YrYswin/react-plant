@@ -31,7 +31,6 @@ export const FullPlantPage: React.FC = () => {
   if (!item) {
     return <>Loading</>
   }
-  console.log(item.size)
 
   return (
     <div className={styles.shopItem}>

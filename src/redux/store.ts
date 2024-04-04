@@ -5,12 +5,14 @@ import plant from './plant/slice'
 import filter from './filter/slice'
 import plantCart from './cart/slice'
 import authReducer from './auth/slice';
+import profile from './user/slice'
 
 export const store = configureStore({
   reducer: {
     plant,
     filter,
     plantCart,
+    profile,
     auth: authReducer,
   }
 })

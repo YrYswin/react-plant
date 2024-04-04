@@ -53,14 +53,13 @@ export const registerAsync = createAsyncThunk<AuthState, UserRegister>(
 export const loginAsync = createAsyncThunk<AuthState, UserCredentials>(
   'auth/login',
   async (userCredentials: UserCredentials, thunkApi) => {
-    console.log(userCredentials);
+    // console.log(userCredentials);
     try {
       const response = await authService.login(
         userCredentials.email,
         userCredentials.password
       );
       if (response.access_token) {
-        console.log(response)
         return response;
       }
     } catch (_error) {

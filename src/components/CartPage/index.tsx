@@ -22,7 +22,7 @@ export const CartPage: React.FC = () => {
         <div className={styles.itemsCart}>
 
           {items.map((item: any) => (
-            <CartItemBlock key={item.id} {...item} totalPrice={totalPrice} />
+            <CartItemBlock key={item.id} {...item} />
           ))}
 
         </div>
@@ -42,11 +42,11 @@ export const CartPage: React.FC = () => {
         </div>
 
         <div className={styles.totalCounter}>
-          <div><p>Subtotal</p><span>$totalPrice</span></div>
+          <div><p>Subtotal</p><span>$ {totalPrice}</span></div>
           <div><p>Coupon Discount</p><span>20%</span></div>
-          <div><p>Shiping</p><span>$shipping</span></div>
+          <div><p>Shiping</p><span>$ 10</span></div>
           <p>View shiping charge</p>
-          <div><p>Total</p><span>$total</span></div>
+          <div><p>Total</p><span>$ {totalPrice * 0.80 + 10}</span></div>
         </div>
 
         <div className={styles.checkout}>

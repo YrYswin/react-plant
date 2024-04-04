@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import styles from './CartPage.module.scss'
 import { useAppDispatch } from '../../redux/store'
@@ -16,7 +17,7 @@ type CartItemProps = {
   totalPrice: number,
 }
 
-export const CartItemBlock: React.FC<CartItemProps> = ({ id, title, imageUrl, count, price, totalPrice }) => {
+export const CartItemBlock: React.FC<CartItemProps> = ({ id, title, imageUrl, count, price }) => {
   const dispatch = useAppDispatch()
 
   const onClickPlus = () => {
@@ -32,9 +33,9 @@ export const CartItemBlock: React.FC<CartItemProps> = ({ id, title, imageUrl, co
   return (
     <div className={styles.itemCart}>
       <div className={styles.itemsName}>
-        <div className={styles.imgItem}>
+        <Link to={`/full-plant/${id}`} className={styles.imgItem}>
           <img src={imageUrl} alt="plant" />
-        </div>
+        </Link>
         <div className={styles.nameItem}>
           <h4>{title}</h4>
           <p>SKU: {id}</p>
