@@ -1,3 +1,29 @@
+declare module 'MyModels' {
+  export interface User {
+    access_token: string;
+    refresh_token: string;
+  }
+
+  export type AuthState = {
+    isLoggedIn: boolean;
+    user: User;
+    error: string;
+  };
+
+  export type UserCredentials = {
+    email: string;
+    password: string;
+  };
+
+  export type UserRegister = {
+    name: string;
+    email: string;
+    password: string;
+    passwordConf: string;
+    avatar: string;
+  };
+}
+
 declare module "*svg" {
   const content: any;
   export default content

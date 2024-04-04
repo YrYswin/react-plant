@@ -1,5 +1,6 @@
 .active {
   color: #46a358;
+  font-weight: 700;
 }
 
 .popup {
@@ -42,7 +43,10 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  font-size: 22px;
+
+  button {
+    font-size: 24px;
+  }
 }
 
 .titlePopup button {
@@ -81,19 +85,19 @@
   flex-direction: column;
   gap: 20px;
   align-items: center;
-}
 
-.inputs input {
-  width: 350px;
-  height: 40px;
-  padding: 4px 10px;
-  border-radius: 4px;
-}
+  input {
+    width: 350px;
+    height: 40px;
+    padding: 4px 10px;
+    border-radius: 4px;
 
-.inputs input::placeholder {
-  color: rgb(169, 169, 169);
-  font-size: 16px;
-  font-weight: 300;
+    &::placeholder {
+      color: rgb(169, 169, 169);
+      font-size: 16px;
+      font-weight: 300;
+    }
+  }
 }
 
 .authorizationBtn {
@@ -104,6 +108,10 @@
   background-color: #46a358;
   color: #eee;
   padding: 8px;
+
+  &:disabled {
+    background-color: #696969;
+  }
 }
 
 .or {
@@ -117,18 +125,18 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
 
-.registerWith button {
-  display: flex;
-  justify-content: center;
-  padding: 10px 20px;
-  gap: 10px;
-  background: transparent;
-  border: 1px solid gray;
-  border-radius: 4px;
-}
+  button {
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px;
+    gap: 10px;
+    background: transparent;
+    border: 1px solid gray;
+    border-radius: 4px;
 
-.registerWith button p {
-  margin: 0;
+    p {
+      margin: 0;
+    }
+  }
 }

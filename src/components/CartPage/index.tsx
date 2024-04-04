@@ -36,7 +36,7 @@ export const CartPage: React.FC = () => {
         <div className={styles.couponItem}>
           <p>Coupon Apply</p>
           <div className={styles.couponInput}>
-            <input type="text" placeholder='Enter coupon code here' />
+            <input type="text" placeholder='Enter coupon code here' id='coupon' />
             <button type='button'>Apply</button>
           </div>
         </div>

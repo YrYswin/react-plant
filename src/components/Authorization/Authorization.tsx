@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
-import { Register, SignUp } from '..'
+import { Register, Login } from '..'
 
 import google from '../../assets/svg/google.svg'
 import facebook from '../../assets/svg/facebook.svg'
 import exite from '../../assets/svg/X.svg'
 
-import './Authorization.css'
+import './Authorization.scss'
 
 type AuthorizationProps = {
   closePopup: () => void,
@@ -32,7 +32,7 @@ export const Authorization: React.FC<AuthorizationProps> = ({ closePopup }) => {
         </div>
 
         {
-          active ? <Register /> : <SignUp />
+          active ? <Register /> : <Login closePopup={closePopup} />
         }
 
         <div className="registerWith">

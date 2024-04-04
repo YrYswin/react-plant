@@ -23,4 +23,4 @@ export * from "./FullPlantPage/Description"
 
 export * from "./Authorization/Authorization"
 export * from "./Authorization/Register"
-export * from "./Authorization/SignUp"
+export * from "./Authorization/Login"
