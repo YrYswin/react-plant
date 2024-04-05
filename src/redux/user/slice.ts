@@ -1,9 +1,17 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice, CaseReducer, ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { fetchProfileData } from "./asyncActions";
 import { userDataState, userSliceState, Status } from "./types";
 
+// Тип для редуктора, обрабатывающего действие извлечения данных профиля
+type FetchProfileDataReducer = CaseReducer<userSliceState, PayloadAction<userDataState>>;
+
+// Тип для дополнительных редукторов в зависимости от статуса запроса
+interface ExtraReducersBuilder {
+  addCase: <S>(actionCreator: any, reducer: (state: userSliceState, action: PayloadAction<S>) => void) => void;
+}
+
 const initialState: userSliceState = {
-  data: null,
+  data: loadProfileFromLocalStorage(),
   status: Status.LOADING,
   error: null,
 }
@@ -11,15 +19,23 @@ const initialState: userSliceState = {
 const profileSlice = createSlice({
   name: 'profile',
   initialState,
-  reducers: {},
-  extraReducers(builder) {
+  reducers: {
+    logout: (state) => {
+      state.data = null;
+      state.status = Status.LOADING;
+      state.error = null;
+      localStorage.removeItem('profile');
+    },
+  },
+  extraReducers(builder: ActionReducerMapBuilder<userSliceState> & ExtraReducersBuilder) {
     builder
       .addCase(fetchProfileData.pending, (state) => {
         state.status = Status.LOADING;
       })
-      .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<userDataState>) => {
+      .addCase(fetchProfileData.fulfilled, (state, action) => {
         state.status = Status.SUCCESS;
         state.data = action.payload;
+        localStorage.setItem('profileData', JSON.stringify(action.payload));
       })
       .addCase(fetchProfileData.rejected, (state, action) => {
         state.status = Status.ERROR;
@@ -28,4 +44,11 @@ const profileSlice = createSlice({
   },
 });
 
-export default profileSlice.reducer
+export const { logout } = profileSlice.actions
+
+export default profileSlice.reducer;
+
+function loadProfileFromLocalStorage(): userDataState | null {
+  const profileData = localStorage.getItem('profile');
+  return profileData ? JSON.parse(profileData) : null;
+}

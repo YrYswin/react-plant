@@ -7,6 +7,7 @@ import './Authorization.scss'
 import { RootState, useAppDispatch } from '../../redux/store';
 import { loginAsync } from '../../redux/auth/slice';
 import { useSelector } from 'react-redux';
+import { fetchProfileData } from '../../redux/user/asyncActions';
 
 type RegisterForm = {
   email: string,
@@ -22,9 +23,11 @@ export const Login: React.FC<Login> = ({ closePopup }) => {
   const dispatch = useAppDispatch()
   const { handleSubmit, control, formState: { errors } } = useForm<RegisterForm>()
 
-  const onLogin: SubmitHandler<RegisterForm> = (data) => {
-    dispatch(loginAsync(data))
+  const onLogin: SubmitHandler<RegisterForm> = async (data) => {
+    await dispatch(loginAsync(data))
+    console.log(user)
     if (user) {
+      dispatch(fetchProfileData(user));
       closePopup()
     }
   }

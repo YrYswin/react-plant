@@ -34,6 +34,11 @@ class TokenService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  setProfile(user: any) {
+    console.log(JSON.stringify(user));
+    localStorage.setItem('profile', JSON.stringify(user));
+  }
+
   removeUser() {
     localStorage.removeItem('user');
   }

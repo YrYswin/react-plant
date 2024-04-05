@@ -3,8 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { selectCart } from '../../redux/cart/selectors'
-import { RootState, useAppDispatch } from '../../redux/store'
-import { fetchProfileData } from '../../redux/user/asyncActions'
+import { RootState } from '../../redux/store'
 
 import logo from '../../assets/svg/logo.svg'
 import loginIcon from '../../assets/svg/loginIcon.svg'
@@ -13,16 +12,11 @@ import styles from './Header.module.scss'
 import { Authorization } from '..'
 
 const Header = () => {
-  const dispatch = useAppDispatch()
-  const user = useSelector((state: RootState) => state.auth.user)
-
   const [visible, setVisible] = React.useState(false)
   const location = useLocation()
   const isMounted = React.useRef(false);
   const { items } = useSelector(selectCart)
   const data = useSelector((state: RootState) => state.profile.data)
-
-  fetch('https://api.escuelajs.co/api/v1/auth/profile').then(response => response.json()).then(res => console.log(res))
 
   const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0)
 
@@ -33,12 +27,6 @@ const Header = () => {
     }
     isMounted.current = true
   }, [items])
-
-  React.useEffect(() => {
-    if (user) {
-      dispatch(fetchProfileData(user));
-    }
-  }, [dispatch, user]);
 
   const closePopup = () => {
     setVisible(false)
@@ -75,10 +63,10 @@ const Header = () => {
             {totalCount !== 0 && <span><p>{totalCount}</p></span>}
           </Link>
 
-          {user ? (
-            <div className={styles.avatar__image}>
+          {data ? (
+            <Link to={'/profile'} className={styles.avatar__image}>
               <img src={data ? data?.avatar : logo} alt='user' />
-            </div>
+            </Link>
           ) : (
             <button type='button' onClick={opepPopup}>
               <img src={loginIcon} alt="login" />

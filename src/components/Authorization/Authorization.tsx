@@ -32,7 +32,7 @@ export const Authorization: React.FC<AuthorizationProps> = ({ closePopup }) => {
         </div>
 
         {
-          active ? <Register /> : <Login closePopup={closePopup} />
+          active ? <Register closePopup={closePopup} /> : <Login closePopup={closePopup} />
         }
 
         <div className="registerWith">

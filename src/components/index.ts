@@ -1,6 +1,7 @@
 export * from "./pages/Home";
 export * from "./pages/Cart";
 export * from "./pages/FullPlant";
+export * from "./pages/MyAccount"
 export * from "./pages/BlogsPage"
 export * from "./pages/PlantCare"
 export * from "./pages/Shop"

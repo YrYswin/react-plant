@@ -31,7 +31,7 @@ class AuthService {
       })
       .then((response) => {
         if (response) {
-          TokenService.setUser(response.data);
+          TokenService.setProfile(response.data);
           console.log(response)
         }
 

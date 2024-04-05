@@ -47,3 +47,49 @@ body {
   width: 1300px;
   margin: 20px auto;
 }
+
+.myAccount {
+  width: 1200px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.accountMenu h1 {
+  font-size: 22px;
+  text-align: start;
+  margin: 10px 30px;
+}
+
+.accountMenu li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  text-align: start;
+  padding: 10px 15px;
+  gap: 15px;
+  transition: all ease-in-out .1s;
+}
+
+.accountMenu li img {
+  color: #46a358;
+  width: 20px;
+}
+
+.accountMenu li p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.accountMenu li:hover,
+.activeClass {
+  border-left: 5px solid #46a358;
+  padding: 10px 20px;
+  color: #46a358;
+}
+
+.logout {
+  margin-top: 10px;
+  border-top: 1px solid #dce8de;
+}
