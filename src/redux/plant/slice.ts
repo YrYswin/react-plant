@@ -32,7 +32,5 @@ const plantSlice = createSlice({
   }
 })
 
-
-
 export const { setItems } = plantSlice.actions
 export default plantSlice.reducer

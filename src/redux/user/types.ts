@@ -18,3 +18,14 @@ export type userDataState = {
   avatar: string,
   role: string
 }
+
+export type profileParamsState = {
+  id: number,
+  name: string,
+  email: string,
+  password: string,
+  avatar: string,
+  role: string,
+  firstName: string,
+  lastName: string,
+}

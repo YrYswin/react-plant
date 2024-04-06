@@ -2,6 +2,8 @@ import React from 'react'
 
 import { useAppDispatch } from '../../redux/store'
 
+import { Orders, UserDetails, Reports, Download, Address, Wishlist, Support } from '..'
+
 import account from '../../assets/svg/accountSvg/account.svg'
 import address from '../../assets/svg/accountSvg/Location.svg'
 import download from '../../assets/svg/accountSvg/Download.svg'
@@ -13,9 +15,11 @@ import wishlist from '../../assets/svg/accountSvg/Wishlist.svg'
 import { logoutAsync } from '../../redux/auth/slice'
 import { logout } from '../../redux/user/slice'
 
-export const MyAccount: React.FC = () => {
+type ProfileParamsState = { title: string, iconSvg: string }
+
+const MyAccount: React.FC = () => {
   const dispatch = useAppDispatch()
-  const [active, setActive] = React.useState('AccountDetails')
+  const [active, setActive] = React.useState('Account Details')
 
   function onClickLogout() {
     if (window.confirm('Вы действительно хотите выйти?')) {
@@ -29,67 +33,32 @@ export const MyAccount: React.FC = () => {
     setActive(page);
   };
 
+  const profileParams: ProfileParamsState[] = [
+    { title: 'Account Details', iconSvg: account },
+    { title: 'Address', iconSvg: address },
+    { title: 'Orders', iconSvg: orders },
+    { title: 'Wishlist', iconSvg: wishlist },
+    { title: 'Reports', iconSvg: reports },
+    { title: 'Downloads', iconSvg: download },
+    { title: 'Support', iconSvg: support },
+  ]
+
   return (
     <div className='myAccount'>
       <div className="accountMenu">
         <h1>My Account</h1>
         <ul>
-          <li
-            onClick={() => handleMenuItemClick('AccountDetails')}
-            className={active === 'AccountDetails' ? 'activeClass' : ''}
-          >
-            <img src={account} alt="#" />
-            <p>Account Details</p>
-          </li>
 
-          <li
-            onClick={() => handleMenuItemClick('Address')}
-            className={active === 'Address' ? 'activeClass' : ''}
-          >
-            <img src={address} alt="#" />
-            <p>Address</p>
-          </li>
-
-          <li
-            onClick={() => handleMenuItemClick('Orders')}
-            className={active === 'Orders' ? 'activeClass' : ''}
-          >
-            <img src={orders} alt="#" />
-            <p>Orders</p>
-          </li>
-
-          <li
-            onClick={() => handleMenuItemClick('Wishlist')}
-            className={active === 'Wishlist' ? 'activeClass' : ''}
-          >
-            <img src={wishlist} alt="#" />
-            <p>Wishlist</p>
-          </li>
-
-          <li
-            onClick={() => handleMenuItemClick('Reports')}
-            className={active === 'Reports' ? 'activeClass' : ''}
-          >
-            <img src={reports} alt="#" />
-            <p>Reports</p>
-          </li>
-
-          <li
-            onClick={() => handleMenuItemClick('Downloads')}
-            className={active === 'Downloads' ? 'activeClass' : ''}
-          >
-            <img src={download} alt="#" />
-            <p>Downloads</p>
-          </li>
-
-          <li
-            onClick={() => handleMenuItemClick('Support')}
-            className={active === 'Support' ? 'activeClass' : ''}
-          >
-            <img src={support} alt="#" />
-            <p>Support</p>
-          </li>
-
+          {profileParams.map((params, i) => (
+            <li
+              key={i}
+              onClick={() => handleMenuItemClick(params.title)}
+              className={active === params.title ? 'activeClass' : ''}
+            >
+              <img src={params.iconSvg} alt={`${params.title}`} />
+              <p>{params.title}</p>
+            </li>
+          ))}
 
           <li
             className='logout'
@@ -102,13 +71,15 @@ export const MyAccount: React.FC = () => {
       </div>
 
       <div className="activePage">
-        {active === 'AccountDetails' && <div>123</div>}
-        {active === 'Address' && <div>1222223</div>}
-        {active === 'Orders' && <div>1233333</div>}
-        {active === 'Wishlist' && <div>1235555</div>}
-        {active === 'Reports' && <div>1244443</div>}
-        {active === 'Downloads' && <div>1777723</div>}
-        {active === 'Support' && <div>1299993</div>}
+
+        {active === 'Account Details' && <UserDetails />}
+        {active === 'Address' && <Address />}
+        {active === 'Orders' && <Orders />}
+        {active === 'Wishlist' && <Wishlist />}
+        {active === 'Reports' && <Reports />}
+        {active === 'Downloads' && <Download />}
+        {active === 'Support' && <Support />}
+
       </div>
     </div>
   )

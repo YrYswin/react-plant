@@ -5,6 +5,7 @@ export * from "./pages/MyAccount"
 export * from "./pages/BlogsPage"
 export * from "./pages/PlantCare"
 export * from "./pages/Shop"
+export * from "./pages/NotFound"
 
 export * from "./HomePage/Banner";
 export * from "./HomePage/OtherComponents/BlogItem";
@@ -28,3 +29,11 @@ export * from "./FullPlantPage/Description";
 export * from "./Authorization/Authorization";
 export * from "./Authorization/Register";
 export * from "./Authorization/Login";
+
+export * from "./AccountParams/Address"
+export * from "./AccountParams/Downloads"
+export * from "./AccountParams/Orders"
+export * from "./AccountParams/Support"
+export * from "./AccountParams/Reports"
+export * from "./AccountParams/Wishlist"
+export * from "./AccountParams/UserDetails"

@@ -44,10 +44,10 @@ const Header = () => {
         </div>
 
         <ul>
-          <li className={location.pathname === '/' ? styles.active : ''}><Link to='/'>Home</Link></li>
-          <li className={location.pathname === `/shop` ? styles.active : ''}><Link to='/shop'>Shop</Link></li>
-          <li className={location.pathname === '/plant-care' ? styles.active : ''}><Link to='/plant-care'>Plant Care</Link></li>
-          <li className={location.pathname === '/blogs' ? styles.active : ''}><Link to='/blogs'>Blogs</Link></li>
+          <li className={location.pathname === '' ? styles.active : ''}><Link to=''>Home</Link></li>
+          <li className={location.pathname === `shop` ? styles.active : ''}><Link to='shop'>Shop</Link></li>
+          <li className={location.pathname === 'plant-care' ? styles.active : ''}><Link to='plant-care'>Plant Care</Link></li>
+          <li className={location.pathname === 'blogs' ? styles.active : ''}><Link to='blogs'>Blogs</Link></li>
         </ul>
 
         <div className={styles.search}>

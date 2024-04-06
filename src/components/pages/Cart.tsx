@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CartPage, InterestingPlant } from '..'
 
-export const Cart: React.FC = () => {
+const Cart: React.FC = () => {
   return (
     <div>
       <CartPage />
@@ -10,3 +10,5 @@ export const Cart: React.FC = () => {
     </div>
   )
 }
+
+export default Cart 

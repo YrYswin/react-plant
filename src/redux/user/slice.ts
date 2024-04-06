@@ -2,10 +2,8 @@ import { PayloadAction, createSlice, CaseReducer, ActionReducerMapBuilder } from
 import { fetchProfileData } from "./asyncActions";
 import { userDataState, userSliceState, Status } from "./types";
 
-// Тип для редуктора, обрабатывающего действие извлечения данных профиля
 type FetchProfileDataReducer = CaseReducer<userSliceState, PayloadAction<userDataState>>;
 
-// Тип для дополнительных редукторов в зависимости от статуса запроса
 interface ExtraReducersBuilder {
   addCase: <S>(actionCreator: any, reducer: (state: userSliceState, action: PayloadAction<S>) => void) => void;
 }
@@ -35,7 +33,7 @@ const profileSlice = createSlice({
       .addCase(fetchProfileData.fulfilled, (state, action) => {
         state.status = Status.SUCCESS;
         state.data = action.payload;
-        localStorage.setItem('profileData', JSON.stringify(action.payload));
+        localStorage.setItem('profile', JSON.stringify(action.payload));
       })
       .addCase(fetchProfileData.rejected, (state, action) => {
         state.status = Status.ERROR;

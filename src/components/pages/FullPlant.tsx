@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FullPlantPage, Description, InterestingPlant } from '..'
 
-export const FullPlant: React.FC = () => {
+const FullPlant: React.FC = () => {
   return (
     <div>
       <FullPlantPage />
@@ -11,3 +11,5 @@ export const FullPlant: React.FC = () => {
     </div>
   )
 }
+
+export default FullPlant 

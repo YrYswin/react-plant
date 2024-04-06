@@ -93,3 +93,39 @@ body {
   margin-top: 10px;
   border-top: 1px solid #dce8de;
 }
+
+.notFound {
+  text-align: center;
+  margin: 300px auto;
+
+  h1 {
+    margin: 30px auto;
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 2px solid #46a358;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all ease-in-out .1s;
+
+    a {
+      color: #46a358;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    &:hover {
+      background-color: #46a358;
+      box-shadow: 2px 2px 5px rgb(100, 100, 100, .5);
+      transform: scale(1.01);
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Banner, Blogs, FindMore, Products } from '..'
 
-export const Home: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div>
       <Banner />
@@ -12,3 +12,4 @@ export const Home: React.FC = () => {
     </div>
   )
 }
+export default Home

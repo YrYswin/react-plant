@@ -1,0 +1,123 @@
+.accountDetails input {
+  border: 1px solid #e2e2e2;
+}
+
+.personalInfo h2,
+.passwordChanged h2 {
+  font-size: 18px;
+  margin: 10px 10px 20px 10px;
+  text-align: start;
+}
+
+.personInputs {
+  width: 880px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.personInput {
+  margin: 20px 0;
+  display: flex;
+
+  .number {
+    display: flex;
+  }
+
+  input {
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+}
+
+.passwordInputs {
+  width: 880px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+
+.number {
+  display: flex;
+  gap: 5px;
+}
+
+.number select {
+  margin-top: 5px;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+}
+
+.passwordInput {
+  margin: 10px 0;
+}
+
+.passwordInput input {
+  margin-top: 5px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.saveBtn {
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 0;
+}
+
+.saveBtn button {
+  padding: 10px 25px;
+  background-color: #46a358;
+  border-radius: 4px;
+  color: #eee;
+  font-size: 16px;
+}
+
+.avatarChange {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatarChange .imgChange {
+  border: 1px solid #e2e2e2;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.changeImgBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  button {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .change {
+    border-radius: 4px;
+    background-color: #46a358;
+    color: #ffffff;
+  }
+
+  .remove {
+    border: none;
+    background-color: transparent;
+    color: #46a358;
+  }
+}
+
+
+
+.passwordInputs .passwordInput,
+.personInputs .personInput {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  text-align: start;
+}
