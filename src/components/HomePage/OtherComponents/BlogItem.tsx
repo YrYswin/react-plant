@@ -4,7 +4,7 @@ import plant from '../../../assets/img/plant.png'
 
 import './Other.scss'
 
-export const BlogItem = () => {
+export const BlogItem: React.FC = () => {
   return (
     <div className='blogs'>
       <img src={plant} alt="title" />

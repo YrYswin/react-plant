@@ -1,17 +1,8 @@
-export * from "./pages/Home";
-export * from "./pages/Cart";
-export * from "./pages/FullPlant";
-export * from "./pages/MyAccount"
-export * from "./pages/BlogsPage"
-export * from "./pages/PlantCare"
-export * from "./pages/Shop"
-export * from "./pages/NotFound"
-
 export * from "./HomePage/Banner";
-export * from "./HomePage/OtherComponents/BlogItem";
 export * from "./HomePage/OtherComponents/Blogs";
-export * from "./HomePage/OtherComponents/FindMoreItem";
 export * from "./HomePage/OtherComponents/FindMore";
+export * from "./HomePage/OtherComponents/BlogItem";
+export * from "./HomePage/OtherComponents/FindMoreItem";
 export * from "./HomePage/Products/Pagination";
 export * from "./HomePage/Products/Products";
 export * from "./HomePage/Products/Categories";
@@ -37,3 +28,7 @@ export * from "./AccountParams/Support"
 export * from "./AccountParams/Reports"
 export * from "./AccountParams/Wishlist"
 export * from "./AccountParams/UserDetails"
+
+export * from "./Checkout/Checkout"
+export * from "./Checkout/OrderMenu"
+export * from "./Checkout/OrderProduct"

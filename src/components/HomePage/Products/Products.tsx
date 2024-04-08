@@ -13,18 +13,17 @@ import { setCurrentPage } from '../../../redux/filter/slice'
 
 export const Products: React.FC = () => {
   const dispatch = useAppDispatch()
-
   const { items, status } = useSelector(selectPlantData)
   const { currentPage, categoryType, sortBy, sortRevers } = useSelector(selectFilter)
 
-  async function getPlants() {
-    try {
-      dispatch(fetchPlant({ currentPage, categoryType, sortBy, sortRevers }))
-    } catch (error) {
-      console.log(error)
-    }
-  }
   React.useEffect(() => {
+    async function getPlants() {
+      try {
+        dispatch(fetchPlant({ currentPage, categoryType, sortBy, sortRevers }))
+      } catch (error) {
+        console.log(error)
+      }
+    }
     getPlants()
   }, [currentPage, categoryType, sortBy, sortRevers])
 

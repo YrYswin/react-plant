@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FullPlantPage, Description, InterestingPlant } from '..'
+import { FullPlantPage, Description, InterestingPlant } from '../components'
 
 const FullPlant: React.FC = () => {
   return (

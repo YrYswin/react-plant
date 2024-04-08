@@ -4,34 +4,29 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { emailValidation, passwordValidation } from './validation'
 
 import './Authorization.scss'
-import { RootState, useAppDispatch } from '../../redux/store';
-import { loginAsync } from '../../redux/auth/slice';
-import { useSelector } from 'react-redux';
-import { fetchProfileData } from '../../redux/user/asyncActions';
+import { useAppDispatch } from '../../redux/store';
 
-type RegisterForm = {
-  email: string,
-  password: string,
-}
+import { fetchGetProfile, fetchLoginAsync } from '../../redux/profile/asyncAction';
+import { tokensState, userLoginState } from '../../redux/profile/types';
 
-type Login = {
+type LoginProps = {
   closePopup: () => void;
 }
 
-export const Login: React.FC<Login> = ({ closePopup }) => {
-  const user = useSelector((state: RootState) => state.auth.user)
+export const Login: React.FC<LoginProps> = ({ closePopup }) => {
   const dispatch = useAppDispatch()
-  const { handleSubmit, control, formState: { errors } } = useForm<RegisterForm>()
+  const { handleSubmit, control, formState: { errors } } = useForm<userLoginState>()
 
-  const onLogin: SubmitHandler<RegisterForm> = async (data) => {
-    await dispatch(loginAsync(data))
-    console.log(user)
-    if (user) {
-      dispatch(fetchProfileData(user));
+
+  const onLogin: SubmitHandler<userLoginState> = async (data) => {
+    const tokens = await dispatch(fetchLoginAsync(data))
+    console.log(tokens)
+    if (tokens) {
+      const typedTokens = tokens.payload as tokensState;
+      dispatch(fetchGetProfile(typedTokens));
       closePopup()
     }
   }
-
   return (
     <div className="signUp">
       <h3>Enter your username and password to login.</h3>

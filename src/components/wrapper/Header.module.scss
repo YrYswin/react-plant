@@ -129,22 +129,42 @@
       }
     }
 
-    .avatar__image {
-      width: 40px;
-      height: 40px;
+    .profileState {
+      position: relative;
+      width: 100px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      border: 1px solid #888;
-      overflow: hidden;
+      justify-content: flex-end;
 
-      /* добавляем overflow: hidden, чтобы обрезать изображение */
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* масштабируем изображение, чтобы оно полностью заполнило контейнер */
+      .profileName {
+        padding: 5px 40px 5px 10px;
+        border: 1px solid #888;
+        border-radius: 20px;
+        position: absolute;
+        left: 0px;
+
+        h1 {
+          font-size: 20px;
+        }
+      }
+
+      .avatar__image {
+        z-index: 100;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid #888;
+        overflow: hidden;
+
+        /* добавляем overflow: hidden, чтобы обрезать изображение */
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          /* масштабируем изображение, чтобы оно полностью заполнило контейнер */
+        }
       }
     }
 

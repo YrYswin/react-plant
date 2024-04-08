@@ -1,30 +1,30 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectProfile } from '../../redux/user/selectors'
 import { Controller, useForm } from 'react-hook-form'
 
 import { emailValidation } from '../Authorization/validation'
-import { profileParamsState } from '../../redux/user/types'
 
 import styles from './AccountParams.module.scss'
+import { selectProfileData } from '../../redux/profile/slice'
+import { profileDataState } from '../../redux/profile/types'
 
 export const UserDetails: React.FC = () => {
-  const data = useSelector(selectProfile)
-  const { control, handleSubmit } = useForm<profileParamsState>()
-  const [formData, setFormData] = React.useState<profileParamsState | undefined>(undefined)
+  const profile = useSelector(selectProfileData)
+  const { control, handleSubmit } = useForm<profileDataState>()
+  const [formData, setFormData] = React.useState<profileDataState | undefined>(undefined)
 
   React.useEffect(() => {
-    if (data) {
+    if (profile) {
       setFormData(prevState => ({
         ...prevState!,
-        email: data.email,
-        name: data.name,
+        email: profile.email,
+        name: profile.name,
 
       }));
     }
-  }, [data]);
+  }, [profile]);
 
-  const onChangeProfileData = (data: profileParamsState) => {
+  const onChangeProfileData = (data: profileDataState) => {
     console.log(data)
   }
 
@@ -42,7 +42,7 @@ export const UserDetails: React.FC = () => {
                 <label htmlFor="firstName">First Name *</label>
                 <input
                   name="firstName" id='firstName'
-                  autoComplete="firstName"
+                  autoComplete="name"
                   value={'your first name'}
                   readOnly
                 />

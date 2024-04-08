@@ -3,21 +3,21 @@ import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { selectCart } from '../../redux/cart/selectors'
-import { RootState } from '../../redux/store'
 
 import logo from '../../assets/svg/logo.svg'
 import loginIcon from '../../assets/svg/loginIcon.svg'
 
 import styles from './Header.module.scss'
 import { Authorization } from '..'
+import { selectProfileData } from '../../redux/profile/slice'
 
 const Header = () => {
   const [visible, setVisible] = React.useState(false)
   const location = useLocation()
   const isMounted = React.useRef(false);
-  const { items } = useSelector(selectCart)
-  const data = useSelector((state: RootState) => state.profile.data)
 
+  const { items } = useSelector(selectCart)
+  const profile = useSelector(selectProfileData)
   const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0)
 
   React.useEffect(() => {
@@ -63,10 +63,18 @@ const Header = () => {
             {totalCount !== 0 && <span><p>{totalCount}</p></span>}
           </Link>
 
-          {data ? (
-            <Link to={'/profile'} className={styles.avatar__image}>
-              <img src={data ? data?.avatar : logo} alt='user' />
-            </Link>
+          {profile ? (
+            <div className={styles.profileState}>
+
+              <div className={styles.profileName}>
+                <h2>{profile.name}</h2>
+              </div>
+
+              <Link to={'/profile'} className={styles.avatar__image}>
+                <img src={profile ? profile?.avatar : logo} alt='user' />
+              </Link>
+
+            </div>
           ) : (
             <button type='button' onClick={opepPopup}>
               <img src={loginIcon} alt="login" />

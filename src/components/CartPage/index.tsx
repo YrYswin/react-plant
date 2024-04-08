@@ -1,10 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { selectCart } from '../../redux/cart/selectors'
 
 import { CartItemBlock } from '..'
-
 import styles from './CartPage.module.scss'
 
 export const CartPage: React.FC = () => {
@@ -50,8 +50,12 @@ export const CartPage: React.FC = () => {
         </div>
 
         <div className={styles.checkout}>
-          <button type='button' className={styles.proceed}>Proceed To Checkout</button>
-          <button type='button' className={styles.shopping}>Continue Shopping</button>
+          <Link to={'/orders'} >
+            <button type='button' className={styles.proceed}>Proceed To Checkout</button>
+          </Link>
+          <Link to={'/'} >
+            <button type='button' className={styles.shopping}>Continue Shopping</button>
+          </Link>
         </div>
       </div>
     </div>

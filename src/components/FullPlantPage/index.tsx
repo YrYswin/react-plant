@@ -1,6 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
+import { addItemFullPlant } from '../../redux/cart/slice'
+import { useAppDispatch } from '../../redux/store'
+
+import searchIcon from '../../assets/svg/Vector.svg'
+import wishlistIcon from '../../assets/svg/Heart.svg'
 
 import plantImg from '../../assets/img/plant.png'
 
@@ -10,7 +15,9 @@ import { Plant } from '../../redux/plant/types'
 
 export const FullPlantPage: React.FC = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const [item, setItem] = React.useState<Plant>()
+  const [count, setCount] = React.useState<number>(1)
   const { id } = useParams()
 
   const getOneItem = async () => {
@@ -23,6 +30,10 @@ export const FullPlantPage: React.FC = () => {
       navigate('/')
     }
   }
+
+  const addToCart = (message: any) => [
+    dispatch(addItemFullPlant({ ...message, count }))
+  ]
 
   React.useEffect(() => {
     getOneItem()
@@ -39,15 +50,15 @@ export const FullPlantPage: React.FC = () => {
 
           {item.imagesUrl.map((img, i) => (
             <div key={i} className={styles.imagesContainer}>
-              <img src={img} alt='miniPicures' />
+              <img src={img ? img : plantImg} alt='miniPicures' />
             </div>
           ))}
         </div>
         <div className={styles.itemImage}>
-          <img src={item.imageUrl} alt="itemImage" />
+          <img src={item.imageUrl ? item.imageUrl : plantImg} alt="itemImage" />
         </div>
         <div className={styles.searchItemshop}>
-          <img src='' alt="search" />
+          <img src={searchIcon} alt="search" />
         </div>
       </div>
 
@@ -80,16 +91,16 @@ export const FullPlantPage: React.FC = () => {
 
         <div className={styles.counterItem}>
           <div className={styles.countItem}>
-            <div>-</div>
-            <div>0</div>
-            <div>+</div>
+            <div onClick={() => setCount(count - 1)}>-</div>
+            <div>{count}</div>
+            <div onClick={() => setCount(count + 1)}>+</div>
           </div>
           <div className={styles.addCartBtn}>
             <button className={styles.buyItem}>BUY NOW</button>
-            {/* <button onClick={() => addCart(item)} className='addCart'>ADD CART</button> */}
+            <button onClick={() => addToCart(item)} className={styles.addCart}>ADD CART</button>
           </div>
           <div className={styles.addToWishlist}>
-            <img src='' alt="wish" />
+            <img src={wishlistIcon} alt="wish" />
           </div>
         </div>
 

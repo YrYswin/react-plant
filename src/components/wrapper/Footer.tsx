@@ -23,7 +23,7 @@ import jcb from '../../assets/footerImg/jcb.svg'
 
 import styles from './Footer.module.css'
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.listOne}>

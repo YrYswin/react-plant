@@ -1,19 +1,18 @@
 import React from 'react'
 
-import { useAppDispatch } from '../../redux/store'
+import { useAppDispatch } from '../redux/store'
+import { fetchLogout } from '../redux/profile/asyncAction'
 
-import { Orders, UserDetails, Reports, Download, Address, Wishlist, Support } from '..'
+import { Orders, UserDetails, Reports, Download, Address, Wishlist, Support } from '../components'
 
-import account from '../../assets/svg/accountSvg/account.svg'
-import address from '../../assets/svg/accountSvg/Location.svg'
-import download from '../../assets/svg/accountSvg/Download.svg'
-import logoutIcon from '../../assets/svg/accountSvg/Logout.svg'
-import orders from '../../assets/svg/accountSvg/Order.svg'
-import reports from '../../assets/svg/accountSvg/Reports.svg'
-import support from '../../assets/svg/accountSvg/Support.svg'
-import wishlist from '../../assets/svg/accountSvg/Wishlist.svg'
-import { logoutAsync } from '../../redux/auth/slice'
-import { logout } from '../../redux/user/slice'
+import account from '../assets/svg/accountSvg/account.svg'
+import address from '../assets/svg/accountSvg/Location.svg'
+import download from '../assets/svg/accountSvg/Download.svg'
+import logoutIcon from '../assets/svg/accountSvg/Logout.svg'
+import orders from '../assets/svg/accountSvg/Order.svg'
+import reports from '../assets/svg/accountSvg/Reports.svg'
+import support from '../assets/svg/accountSvg/Support.svg'
+import wishlist from '../assets/svg/accountSvg/Wishlist.svg'
 
 type ProfileParamsState = { title: string, iconSvg: string }
 
@@ -23,8 +22,8 @@ const MyAccount: React.FC = () => {
 
   function onClickLogout() {
     if (window.confirm('Вы действительно хотите выйти?')) {
-      dispatch(logoutAsync())
-      dispatch(logout())
+      dispatch(fetchLogout())
+      // dispatch(logout())
     }
     window.localStorage.removeItem('token')
   }
@@ -71,7 +70,6 @@ const MyAccount: React.FC = () => {
       </div>
 
       <div className="activePage">
-
         {active === 'Account Details' && <UserDetails />}
         {active === 'Address' && <Address />}
         {active === 'Orders' && <Orders />}

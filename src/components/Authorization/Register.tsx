@@ -1,46 +1,35 @@
 import React from 'react';
-import { RootState, useAppDispatch } from '../../redux/store';
-import TextField from '@mui/material/TextField/TextField';
+import { useNavigate } from 'react-router-dom';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+
+import { useAppDispatch } from '../../redux/store';
 import { emailValidation, passwordValidation } from './validation'
-import { registerAsync } from '../../redux/auth/slice';
-import { useSelector } from 'react-redux';
+import { fetchRegisterAsync } from '../../redux/profile/asyncAction';
 
+import TextField from '@mui/material/TextField/TextField';
 import './Authorization.scss'
-
-export type RegisterForm = {
-  name: string,
-  email: string,
-  password: string,
-  passwordConf: string,
-  avatar: string,
-}
+import { userRegisterState } from '../../redux/profile/types';
 
 type RegisterProps = {
   closePopup: () => void,
 }
 
-const DEFAULT_AVATAR = 'https://cdn-icons-png.flaticon.com/512/5556/5556468.png'
+const avatar = 'https://cdn-icons-png.flaticon.com/512/5556/5556468.png'
 
 export const Register: React.FC<RegisterProps> = ({ closePopup }) => {
   const dispatch = useAppDispatch()
-  const user = useSelector((state: RootState) => state.auth.user)
-  const [avatar, setAvatar] = React.useState<string>(DEFAULT_AVATAR)
-  const { handleSubmit, control, formState: { errors } } = useForm<RegisterForm>()
+  const navigate = useNavigate()
+  const { handleSubmit, control, formState: { errors } } = useForm<userRegisterState>()
 
-  const onRegister: SubmitHandler<RegisterForm> = async (data) => {
-    dispatch(registerAsync({ ...data, avatar }))
-    if (user) {
+  const onRegister: SubmitHandler<userRegisterState> = async (data) => {
+    const { payload } = await dispatch(fetchRegisterAsync({ ...data, avatar }))
+    console.log(payload)
+    if (payload) {
       closePopup()
+      navigate('')
     }
+    window.scrollTo(0, 0)
   }
-
-  const handleAvatar = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files;
-    if (file) {
-      setAvatar(file[0].name);
-    }
-  };
 
   return (
     <div className="register">

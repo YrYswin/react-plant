@@ -4,7 +4,7 @@ import { FindMoreItem } from '../..'
 
 import './Other.scss'
 
-export const FindMore: React.FC = () => {
+const FindMore: React.FC = () => {
   return (
     <div className='findMore'>
 
@@ -14,3 +14,5 @@ export const FindMore: React.FC = () => {
     </div>
   )
 }
+
+export default FindMore 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { CartPage, InterestingPlant } from '..'
+import { CartPage, InterestingPlant } from '../components'
 
 const Cart: React.FC = () => {
   return (

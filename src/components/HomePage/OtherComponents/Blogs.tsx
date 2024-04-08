@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-import './Other.scss'
+// import './Other.scss'
 import { BlogItem } from '../..'
 
-export const Blogs: React.FC = () => {
+const Blogs: React.FC = () => {
   return (
     <div className='ourBlog'>
       <div className='blogTitle'>
@@ -23,3 +23,5 @@ export const Blogs: React.FC = () => {
     </div>
   )
 }
+
+export default Blogs
